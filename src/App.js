@@ -80,6 +80,7 @@ class App extends Component {
                <Switch>
                    <Route exact path="/Content/:id" component={Content}></Route>
                </Switch>
+               <p>read will be grey and unread will white</p>
         </div>
       </div>
   
