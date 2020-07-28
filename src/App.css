@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+
+.notification-content {
+    position: fixed;
+    top: 0;
+    bottom:0;
+    height: 100vh; /* viewport height */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+    
+    /* Add a gray background color and some padding to the footer */
+body,footer {
+      background-color: #f2f2f2;
+ }
