@@ -12,7 +12,7 @@ export default class Content extends Component {
     fetch('http://jsonplaceholder.typicode.com/todos')
     .then(res => res.json())
     .then((data) => {
-      this.setState({ userList: data })
+      this.setState({ notify_data: data })
       // alert(this.state.todos)
       // console.log(this.state.todos)
 
@@ -22,9 +22,9 @@ export default class Content extends Component {
     render(){
         return (
         <div className="container-fluid">
-                 {this.state.notify_data.filter(user => this.props.match.params.id==user.id).map(data_val => (
+                 {this.state.notify_data.filter(notify => this.props.match.params.id==notify.id).map(notify_val => (
                     
-                     <p>{data_val.title}</p> 
+                     <p>{notify_val.title}</p> 
                    
                   ))}
         

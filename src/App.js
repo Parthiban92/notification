@@ -11,7 +11,7 @@ class App extends Component {
            
             this.toggle = this.toggle.bind(this);
            
-            this.state = {todos: [],length: 3}
+            this.state = {notification: [],length: 3}
            
     }
 
@@ -22,7 +22,7 @@ class App extends Component {
     fetch('http://jsonplaceholder.typicode.com/todos')
     .then(res => res.json())
     .then((data) => {
-      this.setState({ todos: data})
+      this.setState({ notification: data})
      
     })
     .catch(console.log)
@@ -30,7 +30,7 @@ class App extends Component {
 
    toggle(e) {
         
-          this.setState({ length: this.state.todos.length})
+          this.setState({ length: this.state.notification.length})
     
     }
 
@@ -43,7 +43,7 @@ class App extends Component {
            <nav className="navbar navbar-expand-lg navbar-dark bg-primary rounded">
                <ul className="navbar-nav mr-auto">
                    <li className="nav-item active">
-                     <a> <h4>Notification</h4> </a>
+                     <Link  className="nav-link" to='/'> <h4>Notification</h4> </Link>
                   </li>
                       
              </ul>
@@ -51,12 +51,12 @@ class App extends Component {
                   <li className="nav-item dropdown no-arrow mx-1 show">
                       <a className="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i className="fas fa-bell fa-fw"></i>
-                          <span className="badge badge-danger badge-counter">{ this.state.todos.length}</span>
+                          <span className="badge badge-danger badge-counter">{ this.state.notification.length}</span>
                       </a>
             
                     <div className="dropdown-list dropdown-menu notification-content dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                        <h6 className="dropdown-header text-center ">Notification Center</h6>
-                        {  this.state.todos.filter(user => user.id <= this.state.length).map(todo => (
+                        <h6 className="dropdown-header">Notification Center</h6>
+                        {  this.state.notification.filter(n_list => n_list.id <= this.state.length).map(list => (
 
                             <a className="dropdown-item d-flex align-items-center" href="#">
                               <div className="mr-3">
@@ -64,9 +64,9 @@ class App extends Component {
                                         <i className="fas fa-donate text-white"></i>
                                   </div>
                               </div>
-                              <div  style={ {backgroundColor:todo.completed ? '#D3D3D3': ''}}>
-                                <Link  className="nav-link" to={`/Content/${todo.id}`}><div className="small text-gray-500"></div></Link>
-                                    {todo.title}
+                              <div  style={ {backgroundColor:list.completed ? '#D3D3D3': ''}}>
+                                <Link  className="nav-link" to={`/Content/${list.id}`}><div className="small text-gray-500"></div></Link>
+                                    {list.title}
                               </div>
                             </a>
                  ))}
